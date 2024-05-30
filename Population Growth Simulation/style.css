@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url("img/background.jpg");
+    background-size: cover; /* Mengatur agar gambar latar belakang menutupi seluruh layar */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative; /* Menjadikan body sebagai kontainer posisi relatif untuk logo */
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.header .logo {
+    width: 50px; /* Ukuran logo */
+    height: 50px;
+    border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
+    margin: 0 20px; /* Menambahkan jarak di antara logo dan judul */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.8); /* Menambahkan lapisan transparan di atas latar belakang */
+    padding: 20px;
+    border-radius: 10px; /* Mengelilingi konten dengan border-radius */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan untuk efek lebih baik */
+}
+
+.input-container {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.input-container label {
+    margin-right: 10px;
+}
+
+.input-container input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.chart-container {
+    width: 75%; /* Membuat kontainer untuk grafik */
+}
+
+.group-info {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.group-info p {
+    margin: 5px;
+}

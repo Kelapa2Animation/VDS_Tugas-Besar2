@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population Growth Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header">
+        <img src="img/logo 1.png" alt="Logo 1" class="logo">
+        <h1>MODEL PERTUMBUHAN PENDUDUK TANPA BATASAN</h1>
+        <img src="img/logo 3.png" alt="Logo 2" class="logo">
+    </div>
+    <div class="container">
+        <div class="input-container">
+            <label for="initialPopulation">Initial Population:</label>
+            <input type="number" id="initialPopulation" value="100">
+        </div>
+        <div class="input-container">
+            <label for="growthRate">Growth Rate:</label>
+            <input type="number" id="growthRate" step="0.01" min="0" max="1" value="0.1">
+        </div>
+        <button onclick="calculatePopulation()">Run</button>
+        <div class="chart-container" style="width: 75%;">
+            <canvas id="populationChart"></canvas>
+        </div>
+        <div class="group-info">
+            <p>Kelompok 4</p>
+            <p>Dwi Novitasari, Ërik Frans Setiawan, Nur Aini Balqis Nugroho, Elianawati, Muhammad Azzam, Denny Fadilah Umar</p>
+            <p>122160024, 122160067, 122160070, 122160076, 122160080, 122160081</p>
+        </div>
+    </div>
+
+    <script>
+        var populationChart;
+
+        function populationModel(P0, r, t) {
+            return P0 * Math.exp(r * t);
+        }
+
+        function calculatePopulation() {
+            var initialPopulation = parseFloat(document.getElementById('initialPopulation').value);
+            var growthRate = parseFloat(document.getElementById('growthRate').value);
+            var years = 10;
+            var populationData = [];
+
+            for (var i = 0; i <= years; i++) {
+                var population = populationModel(initialPopulation, growthRate, i);
+                populationData.push(population);
+            }
+
+            if (populationChart) {
+                populationChart.destroy();
+            }
+
+            var ctx = document.getElementById('populationChart').getContext('2d');
+            populationChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: years + 1}, (_, i) => i),
+                    datasets: [{
+                        label: 'Population Growth',
+                        data: populationData,
+                        borderColor: 'blue',
+                        backgroundColor: 'rgba(0, 0, 255, 0.1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Population'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Years'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Inisialisasi grafik dengan nilai default
+        calculatePopulation();
+    </script>
+</body>
+</html>
